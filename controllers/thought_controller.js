@@ -72,4 +72,9 @@ module.exports = {
             res.status(500).json(err);
         }
     },
+    async createReaction(rew, res) {
+        try {
+            const thought = await Thought
+        }
+    }
 };
