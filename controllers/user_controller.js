@@ -1,7 +1,9 @@
+const { ObjectId } = require('mongoose').Types;
 const { Thought, User } = require('../models');
 
 module.exports = {
     async getUsers(req, res) { //get all
+        console.log(req.body);
         try {
             const users = await User.find();
             res.json(users);
@@ -11,12 +13,12 @@ module.exports = {
     },
     async getSingleUser(req, res) { //get one
         try {
-            const user = await User.findOne({ _id: req.params.userId })
+            const user = await User.findOne({ _id: ObjectId(req.params.userId) })
             .select('__v');
-        if (!user) {
-            return res.status(404).json({ message: 'User ID does not exist' });
-        }
-        res.json(user);
+            if (!user) {
+                return res.status(404).json({ message: 'User ID does not exist' });
+            }
+            res.json(user);
         } catch(err) {
             res.status(500).json(err);
         }
@@ -31,7 +33,7 @@ module.exports = {
     },
     async updateUser(req, res) { //update user by ID
         try {
-            const user = await User.findOneAndUpdate({ _id: req.params.userId })
+            const user = await User.findOneAndUpdate({ _id: new ObjectId(req.params.userId) })
         if (!user) {
             return res.status(404).json({ message: 'User ID does not exist' });
         }
@@ -56,7 +58,7 @@ module.exports = {
         try {
             const friend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $addToSet: { friends: req.body.friendId }},
+                { $addToSet: { friends: req.params.friendId }},
                 { new: true, runValidators: true }
             );
             if (!friend) {
@@ -71,7 +73,7 @@ module.exports = {
         try {
             const friend = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: { friendId: req.params.friendId }}},
+                { $pull: { friends: req.params.friendId }},
                 { runValidators: true, new: true }
             );
             if (!friend) {
