@@ -45,7 +45,7 @@ module.exports = {
     },
     async deleteUser(req, res) { //delete user and associated thoughts
         try {
-            const user = await User.findOneAndDelete({ _id: ObjectId(req.params.userId) });
+            const user = await User.findOneAndDelete({ _id: req.params.userId });
             if (!user) {
                 return res.status(404).json({ message: 'User ID does not exist' });
             }
