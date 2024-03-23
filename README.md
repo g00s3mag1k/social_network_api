@@ -2,7 +2,7 @@
 
 ![GitHub](https://img.shields.io/badge/license-MIT-purple?style=plastic)
 
-URL for demo: -
+URL for demo: https://drive.google.com/file/d/1mxtqHpcNJ9IYgVhdrIvlKn0X8siAa0xX/view
 
 ## Description
 
