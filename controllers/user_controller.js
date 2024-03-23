@@ -34,7 +34,7 @@ module.exports = {
     },
     async updateUser(req, res) { //update user by ID
         try {
-            const user = await User.findByIdAndUpdate(req.params.userId, { /* updated data goes here */ }, { new: true });
+            const user = await User.findByIdAndUpdate(req.params.userId, req.body, { new: true });
             if (!user) {
                 return res.status(404).json({ message: 'User ID does not exist' });
             }

@@ -39,14 +39,14 @@ module.exports = {
     async updateThought(req, res) {
         try {
             const thought = await Thought.findOneAndUpdate(
-                { _id: (req.params.thoughtId) },
-                { $set: req.body },
+                { _id: req.params.thoughtId }, // Remove unnecessary parentheses
+                req.body, // Use the req.body directly instead of wrapping it in $set
                 { runValidators: true, new: true }
             );
-        if (!thought) {
-            return res.status(404).json({ message: 'No Thought with that ID' });
-        }
-        res.json(thought);
+            if (!thought) {
+                return res.status(404).json({ message: 'No Thought with that ID' });
+            }
+            res.json(thought);
         } catch (err) {
             console.log(err);
             res.status(500).json(err);
