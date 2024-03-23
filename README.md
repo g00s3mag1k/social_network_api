@@ -27,7 +27,8 @@ With the following server commands you are able to create, save, update, and/or 
 - MongoDB
 - Mongoose
 
-(Ex.) *Add Screenshots*
+(Ex.) ![Screenshot 2024-03-23 152003](https://github.com/g00s3mag1k/social_network_api/assets/141582553/1f5e1e60-6cbb-4032-aac8-fe2d92106687)
+![Screenshot 2024-03-23 152025](https://github.com/g00s3mag1k/social_network_api/assets/141582553/ae44daa6-6d40-490e-b3fa-1875d2bdc543)
 
 ## Credits
 
